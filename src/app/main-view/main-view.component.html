@@ -1,0 +1,9 @@
+<div>
+    <div>
+        <button mat-button (click)="showTable()">Tabela</button>
+        <button mat-button (click)="showTile()">Kafelki</button>
+        <span class="InfoSpan" >{{spanVar}}</span>
+    </div>
+    <app-table-view [showTableContent]="showTableVar" (onDatePicked)="doSomething($event)"></app-table-view>
+    <app-tile-view [showTileContent]="showTileVar" ></app-tile-view>
+</div>
