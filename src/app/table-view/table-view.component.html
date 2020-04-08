@@ -3,7 +3,9 @@
     <!-- Avatar Column -->
     <ng-container matColumnDef="avatar">
       <th mat-header-cell *matHeaderCellDef> Awatar </th>
-      <td mat-cell *matCellDef="let element"> {{element.avatar}} </td>
+      <td mat-cell *matCellDef="let element">  
+        <img src={{element.avatar}} alt="img" width=30px;>
+      </td>
     </ng-container>
   
     <!-- Name Column -->

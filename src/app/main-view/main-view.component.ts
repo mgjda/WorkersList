@@ -26,8 +26,8 @@ export class MainViewComponent implements OnInit {
     this.showTileVar = true;
   }
 
-  public doSomething(date) {
-    this.spanVar = 'Wybrano osobę ' + date;
+  public doSomething(name: string) {
+    this.spanVar = 'Wybrano osobę ' + name;
   }
 
 }

@@ -1,19 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
-export interface PeriodicElement {
-  avatar: string;
-  name: string;
-  surname: string;
-  job: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { avatar: '1', name: 'Hydrogen', surname: 'Hydrogen', job: 'H' },
-  { avatar: '2', name: 'Helium', surname: 'Hydrogen', job: 'He' },
-  { avatar: '3', name: 'Lithium', surname: 'Hydrogen', job: 'Li' },
-  { avatar: '4', name: 'Beryllium', surname: 'Hydrogen', job: 'Be' },
-  { avatar: '5', name: 'Boron', surname: 'Hydrogen', job: 'B' },
-];
+import { Worker } from '../worker';
+import { WorkersService } from '../workers.service';
 
 @Component({
   selector: 'app-table-view',
@@ -23,22 +10,26 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class TableViewComponent implements OnInit {
 
   displayedColumns: string[] = ['avatar', 'name', 'surname', 'job'];
-  dataSource = ELEMENT_DATA;
+
+  dataSource: Worker[];
 
   @Input() showTableContent: boolean;
 
-  n: string ='gowno';
+  @Output() onDatePicked = new EventEmitter<any>();
 
-  @Output() onDatePicked: EventEmitter<any> = new EventEmitter<any>();
-
-  constructor() { }
+  constructor(private workersService: WorkersService) { }
 
   ngOnInit(): void {
-
+    this.getWorkers();
   }
 
-  getRecord(element){
+  getRecord(element: any): void{
     this.onDatePicked.emit(element.name);
+  }
+
+  getWorkers(): void {
+    this.workersService.getWorkers()
+        .subscribe(dataSource => this.dataSource = dataSource);
   }
 
 }

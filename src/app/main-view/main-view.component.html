@@ -5,5 +5,5 @@
         <span class="InfoSpan" >{{spanVar}}</span>
     </mat-toolbar>
     <app-table-view [showTableContent]="showTableVar" (onDatePicked)="doSomething($event)"></app-table-view>
-    <app-tile-view [showTileContent]="showTileVar" ></app-tile-view>
+    <app-tile-view [showTileContent]="showTileVar" (onDatePicked)="doSomething($event)"></app-tile-view>
 </div>

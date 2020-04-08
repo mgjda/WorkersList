@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Worker } from '../worker';
+import { WorkersService } from '../workers.service';
 
 @Component({
   selector: 'app-tile-view',
@@ -7,14 +9,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TileViewComponent implements OnInit {
 
+  dataSource: Worker[];
+
   @Input() showTileContent: boolean;
 
-  wiadomosc = 'tu wyswietlam kafelki XDD';
+  @Output() onDatePicked = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private workersService: WorkersService) { }
 
   ngOnInit(): void {
+    this.getWorkers();
   }
 
+  getWorkers(): void {
+    this.workersService.getWorkers()
+      .subscribe(dataSource => this.dataSource = dataSource);
+  }
+
+  getRecord(element): void{
+    this.onDatePicked.emit(element.name);
+  }
 
 }
