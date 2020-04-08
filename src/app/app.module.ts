@@ -11,6 +11,10 @@ import {MatTableModule} from '@angular/material/table';
 import { TileViewComponent } from './tile-view/tile-view.component';
 import { TileComponent } from './tile/tile.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import {MatCardModule} from '@angular/material/card';
     MatSliderModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

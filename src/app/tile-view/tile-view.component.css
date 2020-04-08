@@ -1,0 +1,7 @@
+.mat-grid-tile{
+    --color: 96, 4, 99;
+    background-color: rgba(var(--color), 0.5);
+}
+.mat-grid-tile:hover{
+    background-color: rgba(var(--color), 0.6);
+}
