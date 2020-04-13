@@ -26,8 +26,8 @@ export class TileViewComponent implements OnInit {
       .subscribe(dataSource => this.dataSource = dataSource);
   }
 
-  getRecord(element): void{
-    this.onDatePicked.emit(element.name);
+  getRecord(element: any): void {
+    this.onDatePicked.emit(element);
   }
 
 }

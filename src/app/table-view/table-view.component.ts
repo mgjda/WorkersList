@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Worker } from '../worker';
 import { WorkersService } from '../workers.service';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-table-view',
@@ -23,13 +24,12 @@ export class TableViewComponent implements OnInit {
     this.getWorkers();
   }
 
-  getRecord(element: any): void{
-    this.onDatePicked.emit(element.name);
+  getRecord(element: any): void {
+    this.onDatePicked.emit(element);
   }
 
   getWorkers(): void {
     this.workersService.getWorkers()
-        .subscribe(dataSource => this.dataSource = dataSource);
+      .subscribe(dataSource => this.dataSource = dataSource);
   }
-
 }
