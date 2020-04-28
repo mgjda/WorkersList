@@ -1,9 +1,0 @@
-<div>
-    <mat-toolbar>
-        <button mat-icon-button (click)="showTable()"><mat-icon>view_list</mat-icon></button>
-        <button mat-icon-button (click)="showTile()"><mat-icon>view_module</mat-icon></button>
-        <span class="InfoSpan" >{{spanVar}}</span>
-    </mat-toolbar>
-    <app-table-view [showTableContent]="showTableVar" (onDatePicked)="doSomething($event)"></app-table-view>
-    <app-tile-view [showTileContent]="showTileVar" (onDatePicked)="doSomething($event)"></app-tile-view>
-</div>
