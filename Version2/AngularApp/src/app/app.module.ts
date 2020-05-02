@@ -15,6 +15,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
+import { WorkerComponent } from './worker/worker.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,9 @@ import {MatIconModule} from '@angular/material/icon';
     MainViewComponent,
     TableViewComponent,
     TileViewComponent,
-    TileComponent
+    TileComponent,
+    WorkerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatGridListModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

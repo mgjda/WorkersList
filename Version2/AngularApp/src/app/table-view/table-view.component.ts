@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Worker } from '../worker';
-import { WorkersService } from '../workers.service';
-import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
+import { WorkersServerService } from '../workers-server.service';
 
 @Component({
   selector: 'app-table-view',
@@ -10,26 +9,47 @@ import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 })
 export class TableViewComponent implements OnInit {
 
-  displayedColumns: string[] = ['avatar', 'name', 'surname', 'job'];
+  displayedColumns: string[] = ['avatar', 'name', 'surname', 'job', 'action'];
 
-  dataSource: Worker[];
+  public workers: Worker[] = [];  
+
+  public loading: boolean;
+
+  public disableRowEvent: boolean = false;
 
   @Input() showTableContent: boolean;
 
   @Output() onDatePicked = new EventEmitter<any>();
 
-  constructor(private workersService: WorkersService) { }
+  constructor(private workersService: WorkersServerService) {
+
+   }
 
   ngOnInit(): void {
-    this.getWorkers();
+    this.loading = true;
+    this.workersService.getWorkers()
+                        .subscribe(workers => {
+                          this.workers = workers;
+                          this.loading = false;
+                        },
+                          error => console.log(error));
   }
 
   getRecord(element: any): void {
-    this.onDatePicked.emit(element);
+    if (!this.disableRowEvent){
+      this.onDatePicked.emit(element);
+      console.log("EVENT");
+    }
+    
   }
 
-  getWorkers(): void {
-    this.workersService.getWorkers()
-      .subscribe(dataSource => this.dataSource = dataSource);
+  mouseUp(): void{
+    this.disableRowEvent = false;
+    console.log("Up " + this.disableRowEvent);
+  }
+
+  mouseDown(): void{
+    this.disableRowEvent = true;
+    console.log("Down " + this.disableRowEvent);
   }
 }

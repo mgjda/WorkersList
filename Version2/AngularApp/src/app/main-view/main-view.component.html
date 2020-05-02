@@ -1,7 +1,9 @@
 <div>
     <mat-toolbar>
-        <button mat-icon-button (click)="showTable()"><mat-icon>view_list</mat-icon></button>
-        <button mat-icon-button (click)="showTile()"><mat-icon>view_module</mat-icon></button>
+        <button mat-icon-button (click)="showTable()" title="Table view"><mat-icon>view_list</mat-icon></button>
+        <button mat-icon-button (click)="showTile()" title="Tile view"><mat-icon>view_module</mat-icon></button>
+        │
+        <button mat-icon-button  title="Add worker"><mat-icon>person_add</mat-icon></button>
         <span class="InfoSpan" >{{spanVar}}</span>
     </mat-toolbar>
     <app-table-view [showTableContent]="showTableVar" (onDatePicked)="doSomething($event)"></app-table-view>

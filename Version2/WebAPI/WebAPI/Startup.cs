@@ -39,6 +39,17 @@ namespace WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
+
+            // CORS settings for browser, use your client-app's adress. 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("developerska", builder =>
+                {
+                    builder
+                        .WithOrigins("http://localhost:4200")
+                        .WithMethods("GET", "POST", "PUT", "DELETE").Build();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +61,8 @@ namespace WebAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("developerska");
 
             app.UseRouting();
 
