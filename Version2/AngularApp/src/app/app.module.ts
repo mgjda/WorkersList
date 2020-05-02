@@ -20,6 +20,7 @@ import { WorkerComponent } from './worker/worker.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { WorkerDetailsComponent } from './worker-details/worker-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     TileViewComponent,
     TileComponent,
     WorkerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    WorkerDetailsComponent
   ],
   imports: [
     BrowserModule,

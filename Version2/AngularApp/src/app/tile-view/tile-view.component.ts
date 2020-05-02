@@ -15,8 +15,6 @@ export class TileViewComponent implements OnInit {
 
   @Input() showTileContent: boolean;
 
-  @Output() onDatePicked = new EventEmitter<any>();
-
   constructor(private workersService: WorkersServerService) { }
 
   ngOnInit(): void {
@@ -27,10 +25,6 @@ export class TileViewComponent implements OnInit {
                           this.loading = false;
                         },
                           error => console.log(error));
-  }
-
-  getRecord(element: any): void {
-    this.onDatePicked.emit(element);
   }
 }
 

@@ -1,0 +1,24 @@
+.profileView {
+    position: relative;
+    height: 800px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+.example-card {
+    
+}
+  
+.example-header-image {
+    background-size: cover;
+}
+
+.profile-img {
+    width: 40%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 27%;
+}
+
+.small-img {
+    width: 100%;
+}

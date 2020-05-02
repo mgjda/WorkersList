@@ -13,9 +13,6 @@ export class WorkerComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.name = params['name'];
-    });
   }
 
 }

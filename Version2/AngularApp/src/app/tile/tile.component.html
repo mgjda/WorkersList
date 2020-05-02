@@ -7,8 +7,8 @@
             <div>Imię: {{worker.name}}</div>
             <div>Nazwisko: {{worker.surname}}</div>
             <div>Zawód:  {{worker.job}}</div>
-            <button mat-icon-button title="Edit"><mat-icon>create</mat-icon></button>
-            <button mat-icon-button title="Delete"><mat-icon>delete_forever</mat-icon></button>
+            <button [routerLink]="['/worker', worker.id]" mat-icon-button title="Details"><mat-icon>account_box</mat-icon></button>
+            <button mat-icon-button title="Delete"><mat-icon>delete</mat-icon></button>
         </div>
     </div>
 </div>

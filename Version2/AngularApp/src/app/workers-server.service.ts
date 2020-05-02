@@ -21,6 +21,10 @@ export class WorkersServerService {
     return this.http.delete<boolean>(this.url + 'Workers/' + id);
   }
 
+  public getOneWorker(id: number): Observable<Worker> {
+    return this.http.get<Worker>(this.url + 'Workers/' + id);
+  }
+
   // public updateMovie(id: number): Observable<boolean> {
   //   return this.http.put<boolean>(this.url + 'Workers/' + id);
   // }

@@ -15,15 +15,11 @@ export class TableViewComponent implements OnInit {
 
   public loading: boolean;
 
-  public disableRowEvent: boolean = false;
-
   @Input() showTableContent: boolean;
-
-  @Output() onDatePicked = new EventEmitter<any>();
 
   constructor(private workersService: WorkersServerService) {
 
-   }
+  }
 
   ngOnInit(): void {
     this.loading = true;
@@ -33,23 +29,5 @@ export class TableViewComponent implements OnInit {
                           this.loading = false;
                         },
                           error => console.log(error));
-  }
-
-  getRecord(element: any): void {
-    if (!this.disableRowEvent){
-      this.onDatePicked.emit(element);
-      console.log("EVENT");
-    }
-    
-  }
-
-  mouseUp(): void{
-    this.disableRowEvent = false;
-    console.log("Up " + this.disableRowEvent);
-  }
-
-  mouseDown(): void{
-    this.disableRowEvent = true;
-    console.log("Down " + this.disableRowEvent);
   }
 }
