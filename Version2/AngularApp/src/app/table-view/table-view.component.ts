@@ -11,23 +11,25 @@ export class TableViewComponent implements OnInit {
 
   displayedColumns: string[] = ['avatar', 'name', 'surname', 'job', 'action'];
 
-  public workers: Worker[] = [];  
-
-  public loading: boolean;
+  @Input() workers: Worker[];  
 
   @Input() showTableContent: boolean;
+
+  @Output("loadWorkers") loadWorkers: EventEmitter<any> = new EventEmitter();
 
   constructor(private workersService: WorkersServerService) {
 
   }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.workersService.getWorkers()
-                        .subscribe(workers => {
-                          this.workers = workers;
-                          this.loading = false;
-                        },
-                          error => console.log(error));
   }
+
+  deleteWorker(id: number): void {
+    this.workersService
+        .deleteWorker(id)
+        .subscribe(()=> {
+          this.loadWorkers.emit();
+        });
+  }
+
 }

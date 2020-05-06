@@ -1,0 +1,68 @@
+<mat-toolbar>
+    <button mat-icon-button routerLink="" title="Home">
+        <mat-icon>home</mat-icon>
+    </button>
+</mat-toolbar>
+<div *ngIf="!loading">
+<form class="example-form" [formGroup]="newForm" (ngSubmit)="onSubmit()">
+    <div class="profileView">
+        <mat-card class="example-card">
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input matInput autocomplete="off" placeholder="Avatar" aria-label="Avatar" [matAutocomplete]="auto"
+                        [formControl]="stateCtrl" id="avatar" formControlName="avatar">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let avatar of filteredStates | async" [value]="avatar.name">
+                            <span>{{avatar.name}}</span>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Imię</mat-label>
+                                <input matInput autocomplete="off" id="name" formControlName="name" >
+                                <div *ngIf="newForm.controls['name'].dirty && newForm.controls['name'].invalid">
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Nazwisko</mat-label>
+                                <input matInput autocomplete="off" id="surname" formControlName="surname">
+                                <div *ngIf="newForm.controls['surname'].dirty && newForm.controls['surname'].invalid">
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Zawód</mat-label>
+                                <input matInput autocomplete="off" id="job" formControlName="job">
+                                <div *ngIf="newForm.controls['job'].dirty && newForm.controls['job'].invalid">
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button type="submit" [disabled]="!newForm.valid">Accept</button>
+                <button mat-button [routerLink]="['/worker/', selectedId]">Back</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</form>
+</div>
+<div *ngIf="loading">
+    <mat-spinner class="loadingScreen"></mat-spinner>
+</div>

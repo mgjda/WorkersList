@@ -21,6 +21,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WorkerDetailsComponent } from './worker-details/worker-details.component';
+import { WorkerNewFormComponent } from './worker-new-form/worker-new-form.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { WorkerEditFormComponent } from './worker-edit-form/worker-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +38,9 @@ import { WorkerDetailsComponent } from './worker-details/worker-details.componen
     TileComponent,
     WorkerComponent,
     PageNotFoundComponent,
-    WorkerDetailsComponent
+    WorkerDetailsComponent,
+    WorkerNewFormComponent,
+    WorkerEditFormComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +55,13 @@ import { WorkerDetailsComponent } from './worker-details/worker-details.componen
     MatIconModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

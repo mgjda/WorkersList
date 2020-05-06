@@ -10,8 +10,3 @@ table {
     max-width: 960px;
     margin: 20px auto;
 }
-
-.loadingScreen{
-    position: relative;
-    margin: 20px auto;
-}

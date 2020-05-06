@@ -14,21 +14,33 @@ export class WorkerDetailsComponent implements OnInit {
   worker: Worker;
   selectedId: number;
   loading: boolean;
+  noData: boolean;
 
   constructor(private route: ActivatedRoute, private workersService: WorkersServerService) { }
 
   ngOnInit(): void {
-    this.loading = true;
     this.route.paramMap
       .subscribe(params => {
         this.selectedId = +params.get('id');
       });
+    this.loadWorker();
+  }
+  loadWorker(): void{
+    this.loading = true;
     this.workersService.getOneWorker(this.selectedId)
       .subscribe(worker => {
         this.worker = worker;
         this.loading = false;
       },
       error => console.log(error));
+  }
+  deleteWorker(id: number): void {
+    this.workersService
+        .deleteWorker(id)
+        .subscribe(()=> {
+          this.noData = true;
+          this.loadWorker();
+        });
   }
 
 }

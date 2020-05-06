@@ -1,10 +1,7 @@
-<div *ngIf="showTileContent&&!loading" class="tileViewGrid">
+<div *ngIf="showTileContent" class="tileViewGrid">
     <mat-grid-list  cols="3" rowHeight="200px" style="height: calc(401px);">
-        <mat-grid-tile *ngFor="let data of dataSource" >
-            <app-tile [worker]="data" ></app-tile>
+        <mat-grid-tile *ngFor="let worker of workers" >
+            <app-tile [worker]="worker" (loadWorkersSignal)="loadWorkersSignal()"></app-tile>
         </mat-grid-tile>
     </mat-grid-list>
-</div>
-<div *ngIf="showTileContent&&loading">
-    <mat-spinner class="loadingScreen"></mat-spinner>
 </div>

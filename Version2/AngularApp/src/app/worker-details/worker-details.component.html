@@ -1,11 +1,11 @@
 <mat-toolbar>
     <button mat-icon-button routerLink="" title="Home"><mat-icon>home</mat-icon></button>
 </mat-toolbar>
-<div *ngIf="!loading">
+<div *ngIf="!loading&&!noData">
     <div class="profileView">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image">
+        <mat-card class="example-card" >
+            <mat-card-header >
+              <div mat-card-avatar class="example-header-image" >
                   <img class="small-img" src="{{worker.avatar}}" alt="">
               </div>
               <mat-card-title>{{worker.name}} {{worker.surname}}</mat-card-title>
@@ -18,12 +18,22 @@
               <p><b>Zawód:</b> {{worker.job}} </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button routerLink="/worker">Edit</button>
-              <button mat-button>Delete</button>
+              <button mat-button [routerLink]="['/worker/edit/', worker.id]">Edit</button>
+              <button mat-button (click)="deleteWorker(worker.id)">Delete</button>
             </mat-card-actions>
           </mat-card>
     </div>
 </div>
-<div *ngIf="loading">
+<div *ngIf="loading&&!noData">
     <mat-spinner class="loadingScreen"></mat-spinner>
+</div>
+<div *ngIf="noData" class="profileDeleted">
+  <mat-card class="example-card">
+      <mat-card-header>
+          <h1 style="display: flex;align-items: center;justify-content: center;margin: 0 auto;">Pracownik usunięty</h1>
+          <br /><br />
+          
+      </mat-card-header>
+          <button style="display: flex;align-items: center;justify-content: center;margin: 0 auto;" mat-button routerLink="">Home</button>
+    </mat-card>
 </div>

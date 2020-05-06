@@ -1,4 +1,4 @@
-<table *ngIf="showTableContent&&!loading" mat-table [dataSource]="workers" class="mat-elevation-z8 tableView">
+<table *ngIf="showTableContent" mat-table [dataSource]="workers" class="mat-elevation-z8 tableView">
     <!-- Avatar Column -->
     <ng-container matColumnDef="avatar">
       <th mat-header-cell *matHeaderCellDef> Awatar </th>
@@ -32,7 +32,7 @@
         <button [routerLink]="['/worker', element.id]" mat-button title="Details">
           <mat-icon>account_box</mat-icon>
         </button>
-        <button mat-button title="Delete">
+        <button mat-button title="Delete" (click)="deleteWorker(element.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
@@ -41,6 +41,3 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <div *ngIf="showTableContent&&loading">
-      <mat-spinner class="loadingScreen"></mat-spinner>
-  </div>

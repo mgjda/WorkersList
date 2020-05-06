@@ -45,9 +45,11 @@ namespace WebAPI
             {
                 options.AddPolicy("developerska", builder =>
                 {
-                    builder
-                        .WithOrigins("http://localhost:4200")
-                        .WithMethods("GET", "POST", "PUT", "DELETE").Build();
+                    builder //.WithOrigins("http://localhost:4200")
+                        .AllowAnyOrigin() 
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .Build();
                 });
             });
         }
@@ -62,9 +64,9 @@ namespace WebAPI
 
             app.UseHttpsRedirection();
 
-            app.UseCors("developerska");
-
             app.UseRouting();
+
+            app.UseCors("developerska");
 
             app.UseAuthorization();
 

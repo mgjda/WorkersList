@@ -25,11 +25,11 @@ export class WorkersServerService {
     return this.http.get<Worker>(this.url + 'Workers/' + id);
   }
 
-  // public updateMovie(id: number): Observable<boolean> {
-  //   return this.http.put<boolean>(this.url + 'Workers/' + id);
-  // }
+  public updateWorker(id: number, worker: Worker): Observable<boolean> {
+    return this.http.put<boolean>(this.url + 'Workers/' + id, worker);
+  }
 
-  // public postMovie(movie: Worker): Observable<boolean> {
-  //   return this.http.post<boolean>(this.url + 'Workers/', movie);
-  // }
+  public postWorker(worker: Worker): Observable<boolean> {
+    return this.http.post<boolean>(this.url + 'Workers', worker);
+  }
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Worker } from '../worker';
+import { WorkersServerService } from '../workers-server.service';
 
 @Component({
   selector: 'app-tile',
@@ -10,9 +11,19 @@ export class TileComponent implements OnInit {
 
   @Input() worker: Worker;
 
-  constructor() { }
+  @Output("loadWorkersSignal") loadWorkersSignal: EventEmitter<any> = new EventEmitter();
+
+  constructor(private workersService: WorkersServerService) { }
 
   ngOnInit(): void {
+  }
+
+  deleteWorker(id: number): void {
+    this.workersService
+        .deleteWorker(id)
+        .subscribe(()=> {
+          this.loadWorkersSignal.emit();
+        });
   }
 
 }

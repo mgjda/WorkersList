@@ -9,22 +9,22 @@ import { WorkersServerService } from '../workers-server.service';
 })
 export class TileViewComponent implements OnInit {
 
-  public dataSource: Worker[];
-
-  public loading: boolean;
+  //public dataSource: Worker[];
+  @Input() workers: Worker[]; 
 
   @Input() showTileContent: boolean;
+
+  @Output("loadWorkers") loadWorkers: EventEmitter<any> = new EventEmitter();
 
   constructor(private workersService: WorkersServerService) { }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.workersService.getWorkers()
-                        .subscribe(workers => {
-                          this.dataSource = workers;
-                          this.loading = false;
-                        },
-                          error => console.log(error));
   }
+
+  loadWorkersSignal(){
+    this.loadWorkers.emit();
+  }
+
+
 }
 
