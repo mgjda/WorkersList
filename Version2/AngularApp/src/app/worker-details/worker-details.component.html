@@ -34,13 +34,11 @@
                     <div class="form-group">
                         <label for="power">Avatar</label>
                         <img class="small-img" style="width: 30%; float: right;" src="{{worker.avatar}}" alt="">
-                        <select class="form-control" id="power" required [(ngModel)]="worker.avatar" name="power"
-                            #power="ngModel">
+                        <select class="form-control" id="power" required [(ngModel)]="worker.avatar" name="avatar"
+                            #avatar="ngModel">
                             <option *ngFor="let av of avatars" [value]="av">{{av}}</option>
                         </select>
-                        <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
-                            Power is required
-                        </div>
+                        <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
                     </div>
                     <table class="example-full-width" cellspacing="0">
                         <tr>

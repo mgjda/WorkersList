@@ -63,8 +63,8 @@ export class WorkerDetailsComponent implements OnInit {
     this.edit = false;
   }
   public onSubmit() {
-    console.log(this.worker);
-    //this.workersService.updateWorker(this.selectedId,this.worker).subscribe(result => console.log(result));
+    //console.log(this.worker);
+    this.workersService.updateWorker(this.selectedId,this.worker).subscribe(result => console.log(result));
   }
 
   getErrorMessage() {

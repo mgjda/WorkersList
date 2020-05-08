@@ -39,7 +39,6 @@ export class WorkerNewFormComponent implements OnInit {
     }
   ];
 
-
   constructor(fb: FormBuilder, private workersService: WorkersServerService) {
     this.filteredStates = this.stateCtrl.valueChanges
       .pipe(
@@ -74,5 +73,7 @@ export class WorkerNewFormComponent implements OnInit {
    ngOnInit(): void {
   }
   
-
+  getErrorMessage() {
+    return 'To pole musi być wypełnione';
+  }
 }

@@ -27,7 +27,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { WorkerEditFormComponent } from './worker-edit-form/worker-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +38,7 @@ import { WorkerEditFormComponent } from './worker-edit-form/worker-edit-form.com
     WorkerComponent,
     PageNotFoundComponent,
     WorkerDetailsComponent,
-    WorkerNewFormComponent,
-    WorkerEditFormComponent
+    WorkerNewFormComponent
   ],
   imports: [
     BrowserModule,
