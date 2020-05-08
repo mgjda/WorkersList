@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Worker } from '../worker';
 import { WorkersServerService } from '../workers-server.service';
+import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-worker-details',
   templateUrl: './worker-details.component.html',
-  styleUrls: [ '../app.component.css', './worker-details.component.css']
+  styleUrls: ['../app.component.css', './worker-details.component.css']
 })
 export class WorkerDetailsComponent implements OnInit {
 
@@ -15,8 +17,19 @@ export class WorkerDetailsComponent implements OnInit {
   selectedId: number;
   loading: boolean;
   noData: boolean;
+  edit: boolean;
 
-  constructor(private route: ActivatedRoute, private workersService: WorkersServerService) { }
+  avatars = [
+    'assets\\avatar_1.png',
+    'assets\\avatar_2.png',
+    'assets\\avatar_3.png',
+    'assets\\avatar_4.png',
+    'assets\\avatar_5.png'
+  ];
+
+  constructor(private route: ActivatedRoute, private workersService: WorkersServerService) {
+
+  }
 
   ngOnInit(): void {
     this.route.paramMap
@@ -25,22 +38,37 @@ export class WorkerDetailsComponent implements OnInit {
       });
     this.loadWorker();
   }
-  loadWorker(): void{
+
+  loadWorker(): void {
     this.loading = true;
     this.workersService.getOneWorker(this.selectedId)
       .subscribe(worker => {
         this.worker = worker;
         this.loading = false;
       },
-      error => console.log(error));
+        error => console.log(error));
   }
   deleteWorker(id: number): void {
     this.workersService
-        .deleteWorker(id)
-        .subscribe(()=> {
-          this.noData = true;
-          this.loadWorker();
-        });
+      .deleteWorker(id)
+      .subscribe(() => {
+        this.noData = true;
+        this.loadWorker();
+      });
+  }
+  showEditForm() {
+    this.edit = true;
+  }
+  showDetailsForm() {
+    this.edit = false;
+  }
+  public onSubmit() {
+    console.log(this.worker);
+    //this.workersService.updateWorker(this.selectedId,this.worker).subscribe(result => console.log(result));
+  }
+
+  getErrorMessage() {
+    return 'To pole musi być wypełnione';
   }
 
 }

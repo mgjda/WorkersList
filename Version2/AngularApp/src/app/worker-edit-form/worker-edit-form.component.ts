@@ -96,7 +96,7 @@ export class WorkerEditFormComponent implements OnInit {
     this.newForm = this.fb.group({
       id: new FormControl(0),
       avatar: new FormControl(null, [Validators.required]),
-      name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      name: new FormControl(this.worker, [Validators.required, Validators.minLength(3)]),
       surname: new FormControl('janex', [Validators.required, Validators.minLength(3)]),
       job: new FormControl(null, [Validators.required]),
     });
