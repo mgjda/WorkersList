@@ -4,4 +4,5 @@ export interface Worker {
     name: string;
     surname: string;
     job: string;
+    descript: string;
 }

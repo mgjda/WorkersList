@@ -52,6 +52,16 @@
                         </td>
                     </tr>
                 </table>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Opis</mat-label>
+                                <input matInput autocomplete="off" id="descript" formControlName="descript">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
             </mat-card-content>
             <mat-card-actions>
                 <button mat-button type="submit" [disabled]="!newForm.valid">Add</button>

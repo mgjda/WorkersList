@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Worker } from '../worker';
 import { WorkersServerService } from '../workers-server.service';
-import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
-import { map, startWith } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-worker-details',

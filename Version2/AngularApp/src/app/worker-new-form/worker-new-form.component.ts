@@ -9,7 +9,6 @@ export interface Avatar {
   name: string;
 }
 
-
 @Component({
   selector: 'app-worker-new-form',
   templateUrl: './worker-new-form.component.html',
@@ -51,6 +50,7 @@ export class WorkerNewFormComponent implements OnInit {
         name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
         surname: new FormControl(null, [Validators.required, Validators.minLength(3)]),
         job: new FormControl(null, [Validators.required]),
+        descript: new FormControl(null, [Validators.required]),
       });
   }
 

@@ -9,7 +9,6 @@ import { WorkersServerService } from '../workers-server.service';
 })
 export class TileViewComponent implements OnInit {
 
-  //public dataSource: Worker[];
   @Input() workers: Worker[]; 
 
   @Input() showTileContent: boolean;

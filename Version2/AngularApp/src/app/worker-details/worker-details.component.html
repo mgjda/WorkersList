@@ -18,6 +18,7 @@
                 <p><b>Imię:</b> {{worker.name}} </p>
                 <p><b>Nazwisko:</b> {{worker.surname}} </p>
                 <p><b>Zawód:</b> {{worker.job}} </p>
+                <p><b>Opis:</b> {{worker.descript}} </p>
             </mat-card-content>
             <mat-card-actions>
                 <button mat-button (click)="showEditForm()">Edit</button>
@@ -77,6 +78,20 @@
                                         <input matInput autocomplete="off" id="job" required [(ngModel)]="worker.job"
                                         name="job" #job="ngModel">
                                         <mat-error *ngIf="job.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <mat-form-field class="example-full-width" for="descript">
+                                        <mat-label>Opis</mat-label>
+                                        <input matInput autocomplete="off" id="descript" required [(ngModel)]="worker.descript"
+                                        name="descript" #descript="ngModel">
+                                        <mat-error *ngIf="descript.invalid">{{getErrorMessage()}}</mat-error>
                                     </mat-form-field>
                                 </div>
                             </td>
