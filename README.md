@@ -1,6 +1,6 @@
 # WorkersList
 
-Version1 - Zadanie1
+Version1 - Zadanie 1
 
 Version2 - Zadanie 2 + 3 + 4
 
