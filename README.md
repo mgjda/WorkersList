@@ -1,15 +1,15 @@
 # WorkersList
 
-Version1 - Zadanie 1
+Version1 - Zadanie 1:
 - Basic of components
 
-Version2 - Zadanie 2 - 4
+Version2 - Zadanie 2 - 4:
 - Routing
 - Forms
 - Creating WebAPI
 - Connection to database
 
-Version3 - Zadanie 5 - 9
+Version3 - Zadanie 5 - 9:
 - JWT authorization
 - User rights
 - WebAPI interactive documentation
