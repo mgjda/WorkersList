@@ -1,0 +1,15 @@
+<mat-toolbar>
+    <button mat-icon-button (click)="showTable()" title="Table view"><mat-icon>view_list</mat-icon></button>
+    <button mat-icon-button (click)="showTile()" title="Tile view"><mat-icon>view_module</mat-icon></button>
+    │
+    <button mat-icon-button routerLink="/new-worker" title="Add worker" >
+        <mat-icon>person_add</mat-icon>
+    </button>
+</mat-toolbar>
+<div *ngIf="!loading">
+    <app-table-view [showTableContent]="showTableVar"  [workers]="workers" (loadWorkers)="loadWorkers()" ></app-table-view>
+    <app-tile-view [showTileContent]="showTileVar" [workers]="workers" (loadWorkers)="loadWorkers()"></app-tile-view>
+</div>
+<div *ngIf="loading">
+    <mat-spinner class="loadingScreen"></mat-spinner>
+</div>

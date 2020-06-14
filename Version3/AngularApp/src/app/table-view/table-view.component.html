@@ -1,0 +1,43 @@
+<table *ngIf="showTableContent" mat-table [dataSource]="workers" class="mat-elevation-z8 tableView">
+    <!-- Avatar Column -->
+    <ng-container matColumnDef="avatar">
+      <th mat-header-cell *matHeaderCellDef> Awatar </th>
+      <td mat-cell *matCellDef="let element">  
+        <img src={{element.avatar}} alt="img" width=30px;>
+      </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Imię </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Surname Column -->
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef> Nazwisko </th>
+      <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+    </ng-container>
+  
+    <!-- Job Column -->
+    <ng-container matColumnDef="job">
+      <th mat-header-cell *matHeaderCellDef> Zawód </th>
+      <td mat-cell *matCellDef="let element"> {{element.job}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> 
+        <button [routerLink]="['/worker', element.id]" mat-button title="Details">
+          <mat-icon>account_box</mat-icon>
+        </button>
+        <button mat-button title="Delete" (click)="deleteWorker(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

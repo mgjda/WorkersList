@@ -1,0 +1,72 @@
+<mat-toolbar>
+    <button mat-icon-button routerLink="" title="Home">
+        <mat-icon>home</mat-icon>
+    </button>
+</mat-toolbar>
+<form class="example-form" [formGroup]="newForm" (ngSubmit)="onSubmit()">
+    <div class="profileView">
+        <mat-card class="example-card">
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input matInput autocomplete="off" placeholder="Avatar" aria-label="Avatar" [matAutocomplete]="auto"
+                        [formControl]="stateCtrl" id="avatar" formControlName="avatar">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let avatar of filteredStates | async" [value]="avatar.name">
+                            <img class="example-option-img" aria-hidden [src]="avatar.name" height="25">
+                            <span>{{avatar.name}}</span>
+                        </mat-option>
+                    </mat-autocomplete>
+                    
+                </mat-form-field>
+
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Imię</mat-label>
+                                <input matInput autocomplete="off" id="name" formControlName="name" required>
+                                <mat-error *ngIf="newForm.controls['name']">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Nazwisko</mat-label>
+                                <input matInput autocomplete="off" id="surname" formControlName="surname" required>
+                                <mat-error *ngIf="newForm.controls['surname']">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Zawód</mat-label>
+                                <input matInput autocomplete="off" id="job" formControlName="job" required>
+                                <mat-error *ngIf="newForm.controls['job']">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Opis</mat-label>
+                                <input matInput autocomplete="off" id="descript" formControlName="descript">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button type="submit" [disabled]="!newForm.valid">Add</button>
+                <button mat-button routerLink=''>Back</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</form>
