@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebAPI.Models;
@@ -26,31 +27,31 @@ namespace WebAPI.Controllers
         {
             _context = context;
         }
-        [HttpGet]
+        [HttpGet,Authorize]
         public IEnumerable<Worker> Get()
         {
             return _context.Workers.ToList();
         }
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public Worker GetOne(int id)
         {
             return _context.Workers.SingleOrDefault(m => m.Id == id);
         }
-        [HttpPost]
+        [HttpPost, Authorize]
         public bool Create([FromBody] Worker worker)
         {
             _context.Workers.Add(worker);
             _context.SaveChanges();
             return true;
         }
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         public bool Update(int id, [FromBody] Worker worker)
         {
             _context.Workers.Update(worker);
             _context.SaveChanges();
             return true;
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public void Delete(int id)
         {
             //return WorkersCollection.Remove(WorkersCollection.SingleOrDefault(m => m.Id == id));
