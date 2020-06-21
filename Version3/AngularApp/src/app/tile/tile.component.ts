@@ -26,4 +26,13 @@ export class TileComponent implements OnInit {
         });
   }
 
+  isAdminAuthenticated() {
+    const uType: string = localStorage.getItem("uType");
+    if (uType == 'admin') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

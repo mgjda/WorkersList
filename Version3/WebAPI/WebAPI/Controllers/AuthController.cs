@@ -22,6 +22,7 @@ namespace WebAPI.Controllers
         {
             _context = context;
         }
+
         [HttpPost, Route("login")]
         public IActionResult Login([FromBody]LoginModel user)
         {
@@ -35,16 +36,22 @@ namespace WebAPI.Controllers
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Role, _context.Users.Where(u => user.UserName == u.Username ).Single().Type)
+                };
+
                 var tokeOptions = new JwtSecurityToken(
                     issuer: "http://localhost:44336",
                     audience: "http://localhost:44336",
-                    claims: new List<Claim>(),
+                    claims: claims,
                     expires: DateTime.Now.AddMinutes(5),
                     signingCredentials: signinCredentials
                 );
 
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
+                return Ok(new { Token = tokenString, uType = _context.Users.Where(u => user.UserName == u.Username).Single().Type });
             }
             else
             {

@@ -20,7 +20,7 @@
                 <p><b>Zawód:</b> {{worker.job}} </p>
                 <p><b>Opis:</b> {{worker.descript}} </p>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions *ngIf="isAdminAuthenticated() == true">
                 <button mat-button (click)="showEditForm()">Edit</button>
                 <button mat-button (click)="deleteWorker(worker.id)">Delete</button>
             </mat-card-actions>

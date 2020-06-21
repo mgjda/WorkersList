@@ -32,7 +32,7 @@
         <button [routerLink]="['/worker', element.id]" mat-button title="Details">
           <mat-icon>account_box</mat-icon>
         </button>
-        <button mat-button title="Delete" (click)="deleteWorker(element.id)">
+        <button mat-button *ngIf="isAdminAuthenticated() == true" title="Delete" (click)="deleteWorker(element.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

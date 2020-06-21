@@ -40,7 +40,17 @@ namespace WebAPI
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+               c.SwaggerDoc("v1", new OpenApiInfo {
+                   Title = "WorkersList API",
+                   Version = "v1",
+                   Description = "ASP.NET Core Web API for WorkersList aplication",
+                   Contact = new OpenApiContact
+                   {
+                       Name = "Github",
+                       Email = string.Empty,
+                       Url = new Uri("https://github.com/mgjda/WorkersList"),
+                   }
+               });
             });
 
             // CORS settings for browser, use your client-app's adress. 

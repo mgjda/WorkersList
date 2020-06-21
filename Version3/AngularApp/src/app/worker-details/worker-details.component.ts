@@ -68,4 +68,14 @@ export class WorkerDetailsComponent implements OnInit {
     return 'To pole musi być wypełnione';
   }
 
+  isAdminAuthenticated() {
+    const uType: string = localStorage.getItem("uType");
+    if (uType == 'admin') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 }

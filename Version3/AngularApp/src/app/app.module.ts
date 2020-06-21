@@ -7,26 +7,33 @@ import { MainViewComponent } from './main-view/main-view.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableViewComponent } from './table-view/table-view.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { TileViewComponent } from './tile-view/tile-view.component';
 import { TileComponent } from './tile/tile.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { WorkerComponent } from './worker/worker.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WorkerDetailsComponent } from './worker-details/worker-details.component';
 import { WorkerNewFormComponent } from './worker-new-form/worker-new-form.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { LoginComponent } from './login/login.component';
+import { JwtModule } from "@auth0/angular-jwt";
+import { AuthGuardService } from './auth-guard.service';
+
+export function tokenGetter() {
+  return localStorage.getItem("jwt");
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +45,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     WorkerComponent,
     PageNotFoundComponent,
     WorkerDetailsComponent,
-    WorkerNewFormComponent
+    WorkerNewFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +67,16 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:44336"],
+        blacklistedRoutes: []
+      }
+    })
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

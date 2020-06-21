@@ -7,8 +7,10 @@
             <div>Imię: {{worker.name}}</div>
             <div>Nazwisko: {{worker.surname}}</div>
             <div>Zawód:  {{worker.job}}</div>
-            <button [routerLink]="['/worker', worker.id]" mat-icon-button title="Details"><mat-icon>account_box</mat-icon></button>
-            <button mat-icon-button (click)='deleteWorker(worker.id)' title="Delete"><mat-icon>delete</mat-icon></button>
+            <div *ngIf="isAdminAuthenticated() == true">
+                <button [routerLink]="['/worker', worker.id]" mat-icon-button title="Details"><mat-icon>account_box</mat-icon></button>
+                <button mat-icon-button (click)='deleteWorker(worker.id)' title="Delete"><mat-icon>delete</mat-icon></button>
+            </div>
         </div>
     </div>
 </div>
