@@ -23,7 +23,25 @@ namespace WebAPI.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// User authentication.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Auth/login
+        ///     {
+        ///        "userName": "user",
+        ///        "password": "user"
+        ///     }
+        ///
+        /// </remarks>
+        /// <returns>A newly created TodoItem</returns>
+        /// <response code="401">If user is not in database</response>
+        /// <response code="200">If user is in database</response>
         [HttpPost, Route("login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult Login([FromBody]LoginModel user)
         {
             if (user == null)

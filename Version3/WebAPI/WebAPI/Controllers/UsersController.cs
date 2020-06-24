@@ -20,11 +20,27 @@ namespace WebAPI.Controllers
         {
             _context = context;
         }
+
+        /// <summary>
+        /// Get list of users.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /Users
+        ///
+        /// </remarks>
+        /// <returns>A newly created TodoItem</returns>
+        /// <response code="401">If user is not in database</response>
+        /// <response code="200">If user is in database</response>
         [HttpGet, Authorize]
         public IEnumerable<User> Get()
         {
             return _context.Users.ToList();
         }
+        /// <summary>
+        /// Get one user by id.
+        /// </summary>
         [HttpGet("{id}"), Authorize]
         public User GetOne(int id)
         {
