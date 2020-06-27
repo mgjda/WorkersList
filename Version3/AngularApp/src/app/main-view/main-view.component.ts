@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
 })
 export class MainViewComponent implements OnInit {
 
-  showTableVar: boolean = true;
-  showTileVar: boolean = false;
+  showTableVar: boolean;
+  //showTableVar: boolean = true;
+  //showTileVar: boolean = false;
   spanVar: string = 'Nie wybrano żadnego obiektu';
   loading: boolean;
   workers: Worker[] = [];
@@ -22,17 +23,20 @@ export class MainViewComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.showTableVar = JSON.parse(sessionStorage.getItem('selectedView'));
     this.loadWorkers();
   }
 
   showTable() {
     this.showTableVar = true;
-    this.showTileVar = false;
+    sessionStorage.setItem('selectedView', String(this.showTableVar));
+    //this.showTileVar = false;
   }
 
   showTile() {
     this.showTableVar = false;
-    this.showTileVar = true;
+    sessionStorage.setItem('selectedView', String(this.showTableVar));
+    //this.showTileVar = true;
   }
 
   loadWorkers() {

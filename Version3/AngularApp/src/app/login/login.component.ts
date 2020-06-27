@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
       })
     }).subscribe(response => {
       const token = (<any>response).token;
-      console.log(token);
       const uType = (<any>response).uType;
       localStorage.setItem("jwt", token);
       localStorage.setItem("uType", uType);
