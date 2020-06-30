@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { Worker } from '../worker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Avatar {
   name: string;
@@ -38,7 +39,7 @@ export class WorkerNewFormComponent implements OnInit {
     }
   ];
 
-  constructor(fb: FormBuilder, private workersService: WorkersServerService) {
+  constructor(fb: FormBuilder, private workersService: WorkersServerService, private _snackBar: MatSnackBar) {
     this.filteredStates = this.stateCtrl.valueChanges
       .pipe(
         startWith(''),
@@ -75,5 +76,10 @@ export class WorkerNewFormComponent implements OnInit {
   
   getErrorMessage() {
     return 'To pole musi być wypełnione';
+  }
+  openSnackBar() {
+    this._snackBar.open("Worker created","Ok" , {
+      duration: 2000,
+    });
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Worker } from '../worker';
 import { WorkersServerService } from '../workers-server.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-worker-details',
@@ -24,7 +25,7 @@ export class WorkerDetailsComponent implements OnInit {
     'assets\\avatar_5.png'
   ];
 
-  constructor(private route: ActivatedRoute, private workersService: WorkersServerService) {
+  constructor(private route: ActivatedRoute, private workersService: WorkersServerService, private _snackBar: MatSnackBar) {
 
   }
 
@@ -77,5 +78,9 @@ export class WorkerDetailsComponent implements OnInit {
       return false;
     }
   }
-
+  openSnackBar() {
+    this._snackBar.open("Worker edited","Ok" , {
+      duration: 2000,
+    });
+  }
 }
